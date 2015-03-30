@@ -4,7 +4,7 @@ import math
 # Get n+1 points spaced h = (b-a)/n apart over [a,b]
 # Return them in a list
 def getxs(a, b, n):
-    h = (b-a)/n
+    h = (b-a)/float(n)
     xcurr = a + h
     xlist = [a]
 
