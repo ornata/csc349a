@@ -3,7 +3,7 @@ import math
 # Interval: [a,b]
 # Get n+1 points spaced h = (b-a)/n apart over [a,b]
 # Return them in a list
-def getxs(a,b,n):
+def getxs(a, b, n):
     h = (b-a)/n
     xcurr = a + h
     xlist = [a]
@@ -18,7 +18,7 @@ def relative_err(real, approx):
     return math.fabs(((approx/real) - 1.0) * 100.0)
 
 def single_trap(h, f0, f1):
-    return h * (f0 + f1)/2
+    return h * (f0 + f1)/2.0
 
 def trapm(h, n, f):
     trp = f[0]
