@@ -1,6 +1,6 @@
 import trapezoidalrule as trp
-import simpson13 as s13
-import simpson38 as s38
+from simpson13 import simpson as s13
+from simpson38 import simpson as s38
 import math
 
 # function for the given table
@@ -21,15 +21,17 @@ def table1(x):
 
 def main():
 
-    print "----- 21.10 (a)"
+    print "----- 21.10(a)"
     f = lambda x: table1(x)
     b = 0.5
     a = 0
     li = [0.0,0.1,0.2,0.3,0.4,0.5]
-
+    h = b-a
     print trp.traprule(li, b-a, a, b, 5.0, f)
-    print s13.simpson(b-a, a, b, f)
-    print s38.simpson(li, b-a, a, b, f)
+
+    print "----- 21.10(b)"
+    print s13(b-a, f(a), f(a + h/2), f(b))
+    print s38(h, f(a), f(a + h/3), f(a + 2*h/3), f(b))
 
 
 if __name__ == "__main__":
