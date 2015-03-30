@@ -1,8 +1,10 @@
 import math
 
-# Function for question
 def f(x):
     return (1.0-x-4.0*math.pow(x,3.0)+2.0*math.pow(x,5.0))
+
+def g(x):
+    return math.pow( ((x + 1.0)/x), 2.0)
 
 # Interval: [a,b]
 # Get n+1 points spaced h = (b-a)/n apart over [a,b]
@@ -31,15 +33,29 @@ def traprule(xlist, width, x0, xn, n):
 def relative_err(real, approx):
     return math.fabs(((approx/real) - 1.0) * 100.0)
 
-
+# 21.3
 b = 4.0
 a = -2.0
 
 t1 = traprule(getxs(a,b,2.0), b-a, a, b, 2.0)
 t2 = traprule(getxs(a,b,4.0), b-a, a, b, 4.0)
 
+print "----- 21.3"
 print t1
 print relative_err(1104, t1)
+print ""
 print t2
 print relative_err(1104, t2)
+
+# 21.4
+print ""
+b = 2.0
+a = 1.0
+
+print "----- 21.4"
+for i in range(1,5):
+    t = traprule(getxs(a,b,float(i)), b-a, a, b, float(i))
+    print t
+    print relative_err(2.8863, t)
+    print ""
 
