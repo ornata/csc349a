@@ -13,17 +13,16 @@ def getxs(a,b,n):
         xcurr += h
     return xlist
 
-# Get average height
-# that is,
-# [f(x0) + 2*(sum of all of the f(xis) that aren't x0 or xn) + xn]/2n
-def avgheight(xlist, x0, xn, n, fn):
-    return (fn(x0) + 2.0 * sum(map(fn,xlist[1:int(n-1)])) + fn(xn))/(2*n)
-
-# Trapezoidal rule for integration: width * average height over the interval
-def traprule(xlist, width, x0, xn, n, fn):
-    return width * avgheight(xlist, x0, xn, n, fn)
-
 # Compute relative error from the real answer
 def relative_err(real, approx):
     return math.fabs(((approx/real) - 1.0) * 100.0)
 
+def single_trap(h, f0, f1):
+    return h * (f0 + f1)/2
+
+def trapm(h, n, f):
+    trp = f[0]
+    for i in range(1, n-1):
+        trp += 2.0 * f[i]
+    trp += f[n]
+    return h * trp/2.0
