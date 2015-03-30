@@ -16,6 +16,11 @@ t1 = trp.trapm(h1, 2, li)
 li = map(fn, trp.getxs(a, b, 4.0))
 t2 = trp.trapm(h2, 4, li)
 
+t0 = trp.single_trap(b-a, fn(a), fn(b))
+print t0
+print trp.relative_err(1104.0, t0)
+print ""
+
 print t1
 print trp.relative_err(1104.0, t1)
 print ""
