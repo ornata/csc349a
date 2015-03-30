@@ -1,4 +1,7 @@
 import math
+from simpson13 import simpson as s13
+from simpson38 import simpson as s38
+from trapezoidalrule import single_trap
 
 # Function for question
 def table(x):
@@ -18,23 +21,12 @@ def table(x):
 		return 0.8131
 	return 0.0
 
-# single application of simpson's rules
-def s13(h, f0, f1, f2):
-	return 2*h * (f0 + 4*f1 + f2 )/6
-
-def s38(h, f0, f1, f2, f3):
-	return 3*h * (f0 + 3*(f1 + f2) + f3)/8
-
 # trapezoidal rule on uneven step size
 def trapuneven(x, y, n):
 	trap = 0.0
 	for i in range(1, n):
 		trap += (x[i] - x[i-1]) * (y[i] + y[i-1]) / 2
 	return trap
-
-# single application of trapezoidal rule
-def single_trap(h, f0, f1):
-	return h * (f0 + f1)/2
 
 # combination trapezoidal rule using simpson's rules wherever possible
 def combtrap(x, y, n, fn):
